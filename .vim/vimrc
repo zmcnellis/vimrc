@@ -1,0 +1,100 @@
+" Title: VIMRC FILE
+" Author: Zachary McNellis
+" Date: Apr 27, 2019
+
+" Shortcuts
+nmap <C-V> "+gP
+imap <C-V> <ESC><C-V>i
+vmap <C-C> "+y
+nmap Z dd
+nmap <Leader><Leader> :ALEFix<CR>
+nmap ; j.
+
+" Use pathogen plugin manager
+execute pathogen#infect()
+
+" Color scheme
+set background=dark
+colorscheme gruvbox
+
+" General options
+winpos 80 100               " Set window position on open
+set columns=120			        " Num cols
+set lines=40                " Num rows
+set number			            " Line numbers
+set nobackup			          " No backup file
+set showmode			          " Tell when in insert mode
+set showmatch			          " Show matching () {} etc
+set hlsearch			          " Highlight what is searched for
+set incsearch			          " Highlight as you type
+set tabstop=2			          " Length of tab character
+set expandtab               " Tab inserts spaces equal to softtabstop
+set shiftwidth=2		        " >>, <<, ==
+set softtabstop=2           " Tab spaces
+set autoindent              " Auto indent next line
+set showcmd                 " Shows input of incomplete command
+set cursorline              " Shows horizontal cursor bar
+set cursorcolumn            " Shows vertical cursor bar
+set nostartofline           " Prevent cursor changing current column
+set belloff=all             " No beep sound
+set guioptions-=T	          " Remove toolbar
+set guioptions-=m	          " Remove menubar
+set guioptions-=L	          " Remove left scrollbar
+set guioptions-=r	          " Remove scrollbar
+set guifont=Menlo\ Regular:h18  " Set font and font size
+set backspace=indent,eol,start  " More powerful backspacing
+
+" Status bar
+set laststatus=2
+set statusline=
+set statusline +=%1*\ %n\ %*    " Buffer number
+set statusline +=%5*%{&ff}%*    " File format
+set statusline +=%3*%y%*        " File type
+set statusline +=%4*\ %<%F%*    " Full path
+set statusline +=%2*%m%*        " Modified flag
+set statusline +=%1*%=%5l%*     " Current line
+set statusline +=%2*/%L%*       " Total lines
+set statusline +=%1*%4v\ %*     " Virtual column number
+set statusline +=%2*0x%04B\ %*  " Character under cursor
+
+syntax on                       " Enable syntax highlighting
+filetype plugin indent on       " Detect file type
+
+" Cursor colors
+hi CursorLine guibg=#202020
+hi CursorColumn guibg=#202020
+hi Cursor guifg=#00ff00 guibg=#ff66ff
+
+hi User2 guifg=#dd3333 guibg=#222222
+hi User3 guifg=#ff66ff guibg=#222222
+hi User4 guifg=#a0ee40 guibg=#222222
+hi User5 guifg=#eeee40 guibg=#222222
+
+" Find options
+set path+=**                       " Enable subfolder searching (find)
+set wildmenu                       " Display all matching files in tab list
+set wildignore+=**/node_modules/** " Ignore node_modules
+
+" Ctags
+set tags=./tags,tags;$HOME         " Look for nearest tags file
+set suffixesadd=.js,.css,.json     " Look for file extensions when using gf
+
+" Buffers
+" Note: use `:tab ball` to open all buffers in tabs
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
+
+autocmd vimenter * NERDTree        " Open NERDTree on startup
+
+" ALE settings
+let g:ale_fixers = {'javascript': ['prettier_standard']}
+let g:ale_linters = {'javascript': ['']}
+let g:ale_fix_on_save = 0
+
+" NERD Commenter settings
+let g:NERDSpaceDelims = 1
+let g:NERDTrimTrailingWhitespace = 1
+
+" ack.vim + The Silver Searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'

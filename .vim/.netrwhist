@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/zmcnellis/Documents/code/newshipt/signup-web-app-2.0/coverage/lcov-report/src/routes/AB/ChoosePlan'
+let g:netrw_dirhist_2='/Users/zmcnellis/Documents/code/newshipt/signup-web-app-2.0/coverage/lcov-report/src/routes/AB/ChoosePlan/components'
+let g:netrw_dirhist_3='/Users/zmcnellis/Documents/code/newshipt/signup-web-app-2.0/coverage/lcov-report/src/routes/AB/ChoosePlan'
